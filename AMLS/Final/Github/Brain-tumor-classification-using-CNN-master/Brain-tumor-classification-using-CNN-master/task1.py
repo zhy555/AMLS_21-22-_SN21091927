@@ -57,7 +57,7 @@ cnn.fit(x = training_set, validation_data = test_set, epochs = 25)
 
 import numpy as np
 from keras.preprocessing import image
-test_image = image.load_img('dataset/single_prediction/yes_or_no5.jpg', target_size = (64, 64))
+test_image = image.load_img('dataset/single_prediction/yes_or_no3.jpg', target_size = (64, 64))
 test_image = image.img_to_array(test_image)
 test_image = np.expand_dims(test_image, axis = 0)
 result = cnn.predict(test_image)
