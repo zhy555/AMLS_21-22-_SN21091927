@@ -1,4 +1,6 @@
 import winsound
+import time
+import datetime
 import numpy as np
 import tensorflow as tf
 from tensorflow import keras
@@ -6,26 +8,29 @@ from matplotlib import pyplot as plt
 from keras.preprocessing.image import ImageDataGenerator
 tf.__version__
 
+#get system time
+t_sys = datetime.datetime.now().strftime('%Y-%m-%d_%H-%M-%S')
+
 #plot-function
 
-def plot_acc(log):
+def plot_acc(log,t_sys):
     plt.plot(log['accuracy'])
     plt.plot(log['val_accuracy'])
     plt.title('model accuracy')
     plt.ylabel('accuracy')
     plt.xlabel('epoch')
     plt.legend(['train', 'val'], loc='upper left')
-    plt.savefig('./model_acc.jpg')
+    plt.savefig('./model_acc_' + t_sys + '.jpg')
     plt.show()
 
-def plot_loss(log):
+def plot_loss(log,t_sys):
     plt.plot(log['loss'])
     plt.plot(log['val_loss'])
     plt.title('model loss')
     plt.ylabel('loss')
     plt.xlabel('epoch')
     plt.legend(['train', 'val'], loc='upper left')
-    plt.savefig('./model_loss.jpg')
+    plt.savefig('./model_loss_' + t_sys + '.jpg')
     plt.show()
 
 # Part 1 - Data Preprocessing
@@ -67,9 +72,12 @@ cnn.add(tf.keras.layers.Flatten())
 
 # Step 4 - Full Connection
 cnn.add(tf.keras.layers.Dense(units=128, activation='relu'))
-
+cnn.add(tf.keras.layers.Dense(units=128, activation='relu'))
 # Step 5 - Output Layer
 cnn.add(tf.keras.layers.Dense(units=1, activation='sigmoid'))
+
+# Step 6 - Dropout
+#cnn.add(tf.keras.layers.Dropout(0.3))
 
 # Part 3 - Training the CNN
 
@@ -81,12 +89,12 @@ cnn.fit(x = training_set, validation_data = test_set, epochs = 100)
 
 #plot
 data_log = cnn.history.history
-np.save('./model_log',data_log)
-plot_acc(data_log)
-plot_loss(data_log)
+np.save('./model_log_' + t_sys,data_log)
+plot_acc(data_log,t_sys)
+plot_loss(data_log,t_sys)
 
 #make sound
-winsound.Beep(500,2000)
+#winsound.Beep(400,1000)
 
 # Part 4 - Making a single prediction
 
