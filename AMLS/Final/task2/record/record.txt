@@ -1,0 +1,2 @@
+2021-12-16_08-41-44 base
+2021-12-16_08-58-32 third Cov layer and pooling

@@ -37,27 +37,43 @@ for item in data:
     else:
         print('error in class_output',item)
 
-createfolder('./train/yes')
-createfolder('./test/yes')
-createfolder('./train/no')
-createfolder('./test/no')
+createfolder('./train/' + class1)
+createfolder('./test/' + class1)
+createfolder('./train/' + class2)
+createfolder('./test/' + class2)
+createfolder('./train/' + class3)
+createfolder('./test/' + class3)
+createfolder('./train/' + class4)
+createfolder('./test/' + class4)
 
+class1_Train, class1_Test = train_test_split(class_output[0])
+class2_Train, class2_Test = train_test_split(class_output[1])
+class3_Train, class3_Test = train_test_split(class_output[2])
+class4_Train, class4_Test = train_test_split(class_output[3])
 
-Yes_Train, Yes_Test = train_test_split(class_output[0] + class_output[1] + class_output[2])
-No_Train, No_Test = train_test_split(class_output[3])
 
 for item in class_output[0] + class_output[1] + class_output[2] + class_output[3]:
     source_path = './image/' + item
-    if item in class_output[3]:
-        if item in No_Train:
-            des_path = './train/no/' + item
+    if item in class_output[0]:
+        if item in class1_Train:
+            des_path = './train/' + class1 + '/' + item
         else:
-            des_path = './test/no/' + item
-    else:
-        if item in Yes_Train:
-            des_path = './train/yes/' + item
+            des_path = './test/' + class1 + '/' + item
+    elif item in class_output[1]:
+        if item in class2_Train:
+            des_path = './train/' + class2 + '/'+ item
         else:
-            des_path = './test/yes/' + item
+            des_path = './test/' + class2 + '/'+ item
+    elif item in class_output[2]:
+        if item in class3_Train:
+            des_path = './train/' + class3 + '/'+ item
+        else:
+            des_path = './test/' + class3 + '/'+ item
+    elif item in class_output[3]:
+        if item in class4_Train:
+            des_path = './train/' + class4 + '/'+ item
+        else:
+            des_path = './test/' + class4 + '/'+ item
     shutil.copy(source_path,des_path)
 
 print('Train Test split Over!')
