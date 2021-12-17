@@ -26,3 +26,5 @@ P.S. the version of tensorflow-gpu is 2.6.0, the version of keras is 2.6.0, and 
 
 1. run the image_info_read.py file. It will output two folders called train and test. You do not need to do this if there are existing folders
 2. run the CNN_model.py. 
+
+If there is any problem running my code, please contact me without hesitation
