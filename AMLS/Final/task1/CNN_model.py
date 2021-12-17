@@ -1,9 +1,7 @@
 import winsound
-import time
 import datetime
 import numpy as np
 import tensorflow as tf
-from tensorflow import keras
 from matplotlib import pyplot as plt
 from keras.preprocessing.image import ImageDataGenerator
 tf.__version__
@@ -95,18 +93,3 @@ plot_loss(data_log,t_sys)
 
 #make sound
 #winsound.Beep(400,1000)
-
-# Part 4 - Making a single prediction
-
-#import numpy as np
-#from keras.preprocessing import image
-#test_image = image.load_img('dataset/single_prediction/yes_or_no3.jpg', target_size = (64, 64))
-#test_image = image.img_to_array(test_image)
-#test_image = np.expand_dims(test_image, axis = 0)
-#result = cnn.predict(test_image)
-#training_set.class_indices
-#if result[0][0] == 1:
-#    prediction = 'yes'
-#else:
-#    prediction = 'no'
-#print(prediction)
