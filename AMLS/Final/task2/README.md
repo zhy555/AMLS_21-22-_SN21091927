@@ -28,6 +28,16 @@ P.S. the version of tensorflow-gpu is 2.6.0, the version of keras is 2.6.0, and 
 1. run the image_info_read.py file. It will output two folders called train and test. You do not need to do this if there are existing folders
 2. run the CNN_model.py. 
 
+<image> folder is the MRI dataset which is provided by the teacher, no change has been made
+<label.csv> is the MRI dataset labels which is provided by the teacher, no change has been made
 <Record> folder records the procedure I adjust the parameters of CNN models
-
+<test> and <train> folder are produced by the Feature_extraction.py, which contains testset and trainset which is splitted from <image>
+<CNN_model.py> is the code of CNN model
+<Feature_extraction.py> is the code to extract features from <iamge>
+<feature.csv> is the extracted data of MRI, produced by <Feature_extraction.py>
+<image_info_read.py> is used to split the image in <image> into <train> and <test>
+<KNN_model.py> is the code of KNN model
+<RF_model.py> is the code of RF model
+  
+  
 If there is any problem running my code, please contact me without hesitation
