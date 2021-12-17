@@ -3,9 +3,6 @@ import pandas as pd
 from sklearn.model_selection import train_test_split
 from sklearn.neighbors import KNeighborsClassifier
 import matplotlib.pyplot as plt
-from sklearn.metrics import confusion_matrix
-from sklearn.metrics import classification_report
-from sklearn.metrics import accuracy_score
 import itertools
 
 feature_data = pd.read_csv("feature.csv")
@@ -28,7 +25,6 @@ def Knn_model(X,Y):
     right = 0
     wrong = 0
     for index in range(len(yTest)):
-        #if (yTest[index] == 3 and yPred[index] == 3) or (yTest[index] != 3 and yPred[index] != 3):
         if yTest[index] == yPred[index]:
             right += 1
         else:
@@ -54,18 +50,16 @@ def Knn_model(X,Y):
         plt.tight_layout()
         plt.show()
 
-    cm = confusion_matrix(y_true = yTest, y_pred = yPred)
-    cm_plot_labels = ["meningioma_tumor","glioma_tumor",'pituitary_tumor',"no_tumor"]
-    plot_confusion_matrix(cm, cm_plot_labels, title='Confusion matrix')
+    #cm = confusion_matrix(y_true = yTest, y_pred = yPred)
+    #cm_plot_labels = ["meningioma_tumor","glioma_tumor",'pituitary_tumor',"no_tumor"]
+    #plot_confusion_matrix(cm, cm_plot_labels, title='Confusion matrix')
 
     return (right/(right+wrong))
 
-
-
-
-
-epoch = 1
+epoch = 100
 res = 0
 for epoch_time in range(epoch):
     res += Knn_model(X, Y)
+    print(epoch_time)
 res = res / epoch
+print(res)

@@ -1,2 +1,4 @@
 2021-12-16_08-41-44 base
 2021-12-16_08-58-32 third Cov layer and pooling
+2021-12-16_09-17-50 forth Cov layer and pooling and third cnn.add(tf.keras.layers.Dense(units=128, activation='relu'))
+
